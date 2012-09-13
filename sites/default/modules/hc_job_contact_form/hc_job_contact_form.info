@@ -1,0 +1,5 @@
+name        = Jobs Contact Form
+description = Adds jobtitle to webform submission
+core        = 7.x
+version     = 7.x-1.0
+package     = HedgeComm

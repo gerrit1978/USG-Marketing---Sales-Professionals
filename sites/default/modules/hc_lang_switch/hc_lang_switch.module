@@ -1,0 +1,14 @@
+<?php
+
+// $Id$
+
+/**
+ * Implementation of hook_language_switch_links_alter
+ */
+function hc_lang_switch_language_switch_links_alter(&$links, $type, $path) {
+
+  foreach ($links as $key => $link) {
+    $links[$key]['title'] = $key;
+  }
+
+}

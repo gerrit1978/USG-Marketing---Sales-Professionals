@@ -1,0 +1,27 @@
+<?php
+
+function hc_job_contact_form_webform_submission_presave($node, &$submission) {
+
+  // first, make sure we are on a job node and load this
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $full_node = node_load(arg(1));
+  }
+  
+  if ($full_node->type != 'job') {
+    return;
+  }
+  $job_title = $full_node->title;
+  $job_path = url(current_path(), array('absolute' => TRUE));
+
+  // find the "Job" component
+  foreach ($node->webform['components'] as $key => $value) {
+    if (isset($value['form_key']) && $value['form_key'] == 'job') {
+      $key_job = $key;
+    }
+  }
+
+  // and alter the webform submission
+  $output = $job_title . " (<a href='$job_path'>$job_path</a>)";
+  $submission->data[$key_job]['value'][0] = $output;
+
+}

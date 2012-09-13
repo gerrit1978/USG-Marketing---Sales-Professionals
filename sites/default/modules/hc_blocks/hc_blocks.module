@@ -1,0 +1,118 @@
+<?php
+
+
+/************************************************************
+ * Drupal Hooks
+ ************************************************************/
+
+/**
+ * Implements hook_block_info
+ */
+function hc_blocks_block_info() {
+  $blocks['related_jobs'] = array(
+    'info' => t('Gelijkaardige jobs'),
+  );
+  
+  $blocks['apply_linkedin'] = array(
+    'info' => t('Apply with linkedin'),
+  );
+  
+  $blocks['social_media_job'] = array(
+    'info' => t('Social Media links bij een job'),
+  );
+  
+  return $blocks;
+}
+
+
+
+/**
+ * Implements hook_block_view
+ */
+function hc_blocks_block_view($delta = '') {
+  $block = array();
+  
+  switch ($delta) {
+    case 'related_jobs':
+      $related_jobs = _hc_blocks_jobs_from_type();
+      $block['subject'] = t('Gelijkaardige jobs');
+      $block['content'] = $related_jobs;
+      break;
+      
+    case 'apply_linkedin':
+      $block['subject'] = t('Apply with LinkedIn');
+      $block['content'] = _hc_blocks_render_linkedin();
+      break;
+    
+    case 'social_media_job':
+      $block['subject'] = t('Social Media Links');
+      $block['content'] = _hc_blocks_render_social_media_job();
+      break;
+  }
+  
+  
+  
+  return $block;
+}
+
+
+/**
+ * Implements hook_theme
+ */
+function hc_blocks_theme($existing, $type, $theme, $path) {
+  return array(
+    'apply_linkedin' => array(
+      'variables' => array('jobtitle' => NULL),
+      'template' => 'hc_apply_linkedin',
+    ),
+    'social_media_job' => array(
+      'variables' => array('this_url' => NULL),
+      'template' => 'hc_social_media',
+    ),
+  );
+}
+
+
+/************************************************************
+ * Internal Helper Functions
+ ************************************************************/
+
+function _hc_blocks_jobs_from_type() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+		$type_field = field_get_items('node', $node, 'field_job_type');
+		$type = $type_field[0]['tid'];
+		$result = db_query("SELECT * FROM {taxonomy_index} WHERE tid=:tid;", array(':tid' => $type));
+		$nids = array();
+		foreach ($result as $row) {
+			if ($row->nid != $nid) {
+			  $nids[] = $row->nid;
+			}
+		}
+	
+		$nids_arg = implode(',', $nids);
+	
+		$output = views_embed_view('jobs', 'block_2', $nids_arg);
+		return $output;
+  }
+}
+
+
+function _hc_blocks_render_linkedin() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $jobtitle = $node->title;
+  }  
+  $output = theme('apply_linkedin', array('jobtitle' => $jobtitle));
+  return $output;
+}
+
+
+function _hc_blocks_render_social_media_job() {
+  $this_url = url(current_path(), array('absolute' => TRUE));
+  
+  $output = theme('social_media_job', array('this_url' => $this_url));
+  return $output;
+}
