@@ -1,0 +1,63 @@
+<?php
+
+
+/**
+ * Implements hook_menu
+ */
+function hc_wordpress_menu() {
+  $items = array();
+  
+  $items['admin/config/services/hc_wordpress'] = array(
+    'title' => t('Settings Wordpress Implementation Jobboard'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hc_wordpress_admin_form'),
+    'access arguments' => array('access content'),
+    'file' => 'hc_wordpress.admin.inc',
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Implements hook_cron
+ */
+function hc_wordpress_cron() {
+  watchdog('hc_wordpress', 'Cron is uitgevoerd. Hier zullen jobs naar wordpress gestuurd worden!');
+  addPost();
+}
+
+
+
+/**
+ * Helper function for adding a post
+ */
+function addPost($title = "", $description = "", $categories = "", $regio = "", $toPublish = TRUE) {
+
+	$blogid = 0;
+	$username = "admin";
+	$password = "world779";
+	$xmlrpc_url = "http://usgblog.hedgecomm.be/xmlrpc.php";
+
+
+  $content = array();
+
+  /*Forming the content of blog post*/
+  $content['title'] = "Titel";
+  $content['description'] = "Description";
+  $content['categories'] = "";
+  $content['mt_keywords'] = "";
+
+  /*Whether the post has to be published*/
+  $toPublish = true;
+
+  $request = xmlrpc_encode_request("metaWeblog.newPost",
+     array($blogid,$username, $password, $content ,$toPublish));
+    /*Making the request to wordpress XMLRPC of your blog*/
+    $xmlresponse = get_response($xmlrpc_url, $request);
+    $response = xmlrpc_decode($xmlresponse);
+
+	watchdog('hc_wordpress', 'Nieuwe job toegevoegd');
+
+    return $response;
+}

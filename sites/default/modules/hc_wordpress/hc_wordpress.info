@@ -1,0 +1,6 @@
+name          = Wordpress Integration
+description   = Provides integration from jobboard to wordpress blog
+core          = 7.x
+version       = 7.x-1.0
+
+package       = HedgeComm
