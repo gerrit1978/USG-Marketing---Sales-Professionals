@@ -1,7 +1,7 @@
 /* Page */
 * { margin: 0; padding: 0;}
 html { background: white; }
-body { margin: 0; padding: 0;}
+body { margin: 0; padding: 0; color: #626261;}
 
 #site-name { width: 390px; height: 51px; background: url(../img/logo.png) no-repeat left top; margin-top: 30px;}
 #site-name a    { display: block; text-indent: -999em; height: 51px;}
@@ -119,8 +119,8 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 #nav-wrapper #menu-bar { height: 50px; line-height: 60px; background: url(../img/bg-main-menu.png) no-repeat center center; padding: 3px 0 7px 0;}
 #nav-wrapper #menu-bar ul { }
 #nav-wrapper #menu-bar ul li {list-style: none: float: left; text-align: center; height: 50px; line-height: 50px;}
-#nav-wrapper #menu-bar ul li a { color: #41555b; font-size: 1.231em; text-transform: lowercase; padding: 0;}
-#nav-wrapper #menu-bar ul li a span { border-right: 1px solid #41555b; padding: 0 25px;}
+#nav-wrapper #menu-bar ul li a { color: #626261; font-size: 1.231em; text-transform: lowercase; padding: 0;}
+#nav-wrapper #menu-bar ul li a span { border-right: 1px solid #626261; padding: 0 25px;}
 #nav-wrapper #menu-bar ul li.last a span { border-right: none;}
 #nav-wrapper #menu-bar ul li a.active, #nav-wrapper #menu-bar ul li a.active#home-link { }
 #nav-wrapper #menu-bar ul li a.active { background: url(../img/bg-active-menu-item.png) no-repeat center 35px; height: 60px;}
@@ -131,7 +131,9 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 #nav-wrapper #menu-bar ul.nice-menu li ul { border: none; background: white; top: 50px; background: white; border: 1px solid #ededed;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li { line-height: 28px; text-align: left; height: 28px;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a { text-transform: none; font-size: 1em; padding: 0; border-right: none; padding-left: 10px;}
+#nav-wrapper #menu-bar ul.nice-menu li ul li a:hover { color: #59802c; font-weight: bold;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a span { border: none; padding: 0;}
+#nav-wrapper #menu-bar ul li a.active ul li a { background: none;}
 
 /* Front page regions */
 body.front {}
