@@ -1,5 +1,14 @@
 jQuery(document).ready(function($) {
 
+  // zijbalk op z'n plaats houden
+  var $scrollingDiv = $(".region-sidebar-second");
+ 
+		$(window).scroll(function(){			
+			$scrollingDiv
+				.stop()
+				.animate({"marginTop": ($(window).scrollTop()) + "px"}, "slow" );			
+		});
+
 	// placeholder search form
 	$('#search-block-form .form-text').attr('placeholder', 'Site doorzoeken');
 
