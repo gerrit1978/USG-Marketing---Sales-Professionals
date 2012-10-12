@@ -5,19 +5,19 @@ jQuery(document).ready(function($) {
 
 	// default link animations
 	$('#columns a').not('.large-btn').hover(function() { 
-		$(this).animate({borderBottomColor: '#344e56'}, 100)
+		$(this).animate({borderBottomColor: '#59802c'}, 100)
 	}, function() {
-		$(this).animate({borderBottomColor: '#ccd3d5'}, 100)
+		$(this).animate({borderBottomColor: '#59802c'}, 100)
 	});
 	
 	// animate buttons bg color
 	$('#columns a.large-btn, #columns a.small-btn, .node-type-job .block-webform .form-submit').hover(function() {
 	  $(this).animate({
-	    backgroundColor: '#344e56'
+	    backgroundColor: '#59802c'
 	  }, 100)
 	}, function() {
 	  $(this).animate({
-	    backgroundColor: '#677a80'
+	    backgroundColor: '#819c59'
 	  }, 100)
 	});
 	
