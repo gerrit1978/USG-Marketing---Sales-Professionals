@@ -133,7 +133,7 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 #nav-wrapper #menu-bar ul.nice-menu li ul li a { text-transform: none; font-size: 1em; padding: 0; border-right: none; padding-left: 10px;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a:hover { color: #59802c; font-weight: bold;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a span { border: none; padding: 0;}
-#nav-wrapper #menu-bar ul li a.active ul li a { background: none;}
+#nav-wrapper #menu-bar ul.nice-menu li ul li a.active { background: none; }
 
 /* Front page carrousel  DEPRECATED
 body.front .region-content-aside .view { position: relative;}
