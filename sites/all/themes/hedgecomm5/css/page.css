@@ -213,7 +213,7 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 #footer-wrapper #footer .block { margin: 0;}
 
 /* Apply with linkedin */
-#block-hc-blocks-apply-linkedin { height: 60px; margin-top: 70px; }
+#block-hc-blocks-apply-linkedin { height: 60px; margin-top: 30px; }
 #block-hc-blocks-apply-linkedin .block-inner { margin-left: 30px;}
 
 .linked-in-wrapper a { border: none !important;}
@@ -236,19 +236,19 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 
 /* Job detail en andere: fields */
 .field h2.field-label { font-size: 1.308em;}
-.node-type-job .job-extra { padding: 20px 10px; background: #e7dcc3; margin-bottom: 20px; border-bottom: 1px solid #cfba88; color: #a07511;}
+.node-type-job .job-extra { padding: 20px 10px; background: #d1dbc4; margin-bottom: 20px; border-bottom: 1px solid #819c59; color: #59802c;}
 .node-type-job .field.field-name-field-job-regio { background: url(../img/icon-globe.png) no-repeat left top; min-height: 25px; line-height: 25px; padding-left: 30px; display: inline-block; margin-right: 30px;margin-bottom: 10px;}
 .node-type-job .arbeid { background: url(../img/icon-clock.png) no-repeat left top; min-height: 25px; line-height: 25px; padding-left: 30px; display: inline-block; margin-right: 30px;}
-.node-type-job .arbeid span, .node-type-job .functie-branche span { color: white;}
+.node-type-job .arbeid span, .node-type-job .functie-branche span { color: #a9ba8c;}
 .node-type-job .functie-branche { background: url(../img/icon-suitcase.png) no-repeat left top; min-height: 25px; line-height: 25px; padding-left: 40px; display: inline-block;}
 .node-type-job .node-content { border-right: 1px solid #ccd3d5; padding-right: 10px;}
 
-.node-type-job .block-webform { background: #e7dcc3; padding: 20px; margin-bottom: 0; font-size: 1.154em; border: 1px solid #cfba88;}
+.node-type-job .block-webform { background: #d1dbc4; padding: 20px; margin-bottom: 0; font-size: 1.154em; border: 1px solid #819c59;}
 .node-type-job .block-webform form { margin: 0;}
-.node-type-job .block-webform form .webform-component label { color: #9f7800; top: 3px; font-size: 0.923em;}
+.node-type-job .block-webform form .webform-component label { color: #626261; top: 3px; font-size: 0.923em;}
 .node-type-job .block-webform form .webform-component { margin-top: 10px; margin-bottom: 0; }
-.node-type-job .block-webform form .form-text { height: 20px; line-height: 20px; border: 1px solid #cfba88; }
-.node-type-job .block-webform .form-submit { border: none; color: white; background: #677a80; border-bottom: 5px solid #344e56; padding: 8px 20px; text-transform: uppercase; display: inline-block; text-align: center; cursor: pointer;}
+.node-type-job .block-webform form .form-text { height: 20px; line-height: 20px; border: 1px solid #a9ba8c; }
+.node-type-job .block-webform .form-submit { border: none; color: white; background: #819c59; border-bottom: 5px solid #59802c; padding: 8px 20px; text-transform: uppercase; display: inline-block; text-align: center; cursor: pointer;}
 .node-type-job form .messages { font-size: 0.846em; border: none; background: none; padding: 0; margin: 0;}
 
 .node-type-job #block-hc-blocks-social-media-job { margin-top: 20px; border-top:1px solid #ccd3d5; padding: 20px 0; border-bottom: 1px solid #ccd3d5;}
