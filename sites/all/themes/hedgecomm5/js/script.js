@@ -22,23 +22,29 @@ jQuery(document).ready(function($) {
 	});
 	
 	// animate links color
-	$('.brown a').hover(function() {
+	$('.green a').hover(function() {
 	  $(this).animate({
-	    borderBottomColor: '#cdb886',
-	    color: '#cdb886'
+	    borderBottomColor: '#819c59',
+	    color: '#819c59'
 	  }, 200)
 	}, function() {
 	  $(this).animate({
-	    borderBottomColor: '#e7dcc3',
-	    color: '#e7dcc3'
+	    borderBottomColor: '#d1dbc4',
+	    color: '#d1dbc4'
 	  }, 200)
 	});
 	
   // animate prefooter links color
   $('#tertiary-content-wrapper  a').hover(function() {
-		$(this).animate({borderBottomColor: '#e7dcc3'}, 150);
+		$(this).animate({
+		  borderBottomColor: '#d1dbc4',
+		  color: '#d1dbc4'
+		}, 150);
   }, function() {
-		$(this).animate({borderBottomColor: '#a07511'}, 150);  
+		$(this).animate({
+		  borderBottomColor: '#59802c',
+		  color: '#59802c'
+		}, 150);  
   });
  
   // carrousel
