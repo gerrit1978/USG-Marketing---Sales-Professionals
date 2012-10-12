@@ -57,6 +57,7 @@ jQuery(document).ready(function($) {
   });
  
   // carrousel
+  /* DEPRECATED 
 	$('#block-views-carrousel-block .view-content ul').carouFredSel({
 	  width: "auto",
 	  items: 1,
@@ -68,6 +69,8 @@ jQuery(document).ready(function($) {
 	  },
 	  pagination : '#carrousel-pagination',
 	});
+	
+	*/
 	
 	// scroll to top
 	$('a#scrollTop').click(function(e) {

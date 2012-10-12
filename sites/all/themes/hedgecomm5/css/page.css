@@ -135,13 +135,7 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 #nav-wrapper #menu-bar ul.nice-menu li ul li a span { border: none; padding: 0;}
 #nav-wrapper #menu-bar ul li a.active ul li a { background: none;}
 
-/* Front page regions */
-body.front {}
-body.front #block-system-main { margin-top: 40px; }
-body.front #main-content { width: 620px; float: left; margin-right: 10px;}
-body.front .region-content-aside { width: 306px; float: left;}
-
-/* Front page carrousel */
+/* Front page carrousel  DEPRECATED
 body.front .region-content-aside .view { position: relative;}
 body.front .region-content-aside .view ul { margin: 0; }
 body.front .region-content-aside .view ul li { list-style: none; position: relative; width: 306px; height: 308px; }
@@ -151,6 +145,18 @@ body.front .region-content-aside .view .view-footer #carrousel-pagination { posi
 body.front .region-content-aside .view .view-footer #carrousel-pagination a { width: 9px; height: 9px; text-indent: -999em; background: url(../img/carrousel-pager.png) center top; display: block; float: left; border: none; margin-right: 3px;}
 body.front .region-content-aside .view .view-footer #carrousel-pagination a.selected { background-position: center bottom; }
 body.front .region-content-aside .view .view-footer #carrousel-kader { position: absolute; top: 0; left: 0; background: url(../img/bg-view-carrousel.png) no-repeat left top; z-index: 10000; width: 306px; height: 308px;}
+*/
+
+/* Front page carrousel */
+body.front .view-carrousel { position: relative; }
+body.front .view-carrousel ul { list-style: none; margin-left: 10px;}
+body.front .view-carrousel ul li { }
+body.front .view-carrousel ul li .image img { border-radius: 5px;}
+body.front .view-carrousel ul li .views-field-field-car-tekst { position: absolute; top: 20px; left: 20px; background: url(../img/carrousel-bottom.png) no-repeat center bottom; width: 30%; border-radius: 10px; color: white; padding-bottom: 20px;}
+body.front .view-carrousel ul li .views-field-field-car-tekst .field-content { background: #58802b; border-top-left-radius: 10px; border-top-right-radius: 10px;   -webkit-border-top-left-radius: 10px; -webkit-border-top-right-radius: 10px; padding: 0 15px;}
+body.front .view-carrousel ul li .views-field-field-car-tekst h1 { color: white;}
+body.front .view-carrousel ul li .views-field-field-car-tekst a { color: white; border-bottom: 1px solid #d1dbc4;}
+body.front .view-carrousel .view-footer { position: absolute; bottom: 20px; right: 20px; background: white; width: 30%; padding: 5px 10px; border-radius: 5px; color: #626161;}
 
 /* Front page job overview */
 body.front #content-bottom .block-views ul { margin: 0; }
@@ -165,7 +171,7 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 
 
 /* Content Bottom Blocks 1 - 2 - 3 */
-#content-bottom { margin: 20px 0 60px 0; clear: both; }
+#content-bottom { margin-bottom: 60px; clear: both; }
 #content-bottom .region { width: 300px; float: left; margin-right: 20px; background: url(../img/bg-block-bottom.png) no-repeat center bottom; padding-bottom: 18px; position: relative;}
 #content-bottom .region .block-views { background: white; margin: 0; border: 1px solid #d1dbc4; padding-bottom: 10px; min-height: 290px;}
 #content-bottom .region .block-views h2 { margin-left: 15px; margin-right: 15px; margin-top: 10px;}
