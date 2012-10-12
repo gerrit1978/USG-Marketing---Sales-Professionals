@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 		$(window).scroll(function(){			
 			$scrollingDiv
 				.stop()
-				.animate({"marginTop": ($(window).scrollTop()) + "px"}, "slow" );			
+				.animate({"marginTop": ($(window).scrollTop()) + "px"}, "fast" );			
 		});
 
 	// placeholder search form
