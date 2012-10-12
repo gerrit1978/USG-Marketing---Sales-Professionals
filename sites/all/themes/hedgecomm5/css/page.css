@@ -88,7 +88,7 @@ header[role=banner],
 }
 
 /* Custom Styles */
-#columns a { color: #677a80; border-bottom: 1px solid #ccd3d5;}
+#columns a { color: black; border-bottom: 1px solid #ccd3d5;}
 #columns a.large-btn { font-size: 1.692em; color: white; background: #677a80; border-bottom: 5px solid #344e56; padding: 3px 25px; text-transform: uppercase; width: 180px; display: inline-block; text-align: center;}
 #columns a.small-btn { background: #819c59; border-bottom: 2px solid #59802c; color: #fff; float: right; padding: 2px 10px;}
 #columns { margin: 0 10px;}
@@ -150,7 +150,7 @@ body.front .region-content-aside .view .view-footer #carrousel-kader { position:
 body.front #content-bottom .block-views ul { margin: 0; }
 body.front #content-bottom .block-views ul li { list-style: none; margin-bottom: -10px;line-height: 1.4; padding-left: 15px; padding-bottom: 4px; padding-top: 8px;}
 body.front #content-bottom .block-views ul li.last { margin-bottom: 3px;}
-body.front #content-bottom .block-views ul li .views-field-title a { color: #626261; font-size: 1.077em; border: none; }
+body.front #content-bottom .block-views ul li .views-field-title a { color: b; font-size: 1.077em; border: none; }
 body.front #content-bottom .block-views ul li .views-field-field-job-arbeidsduur, body.front #content-bottom .block-views ul li .views-field-created {color: #cfd0d0; margin-bottom: 10px;}
 body.front #content-bottom .block-views ul li:hover { background: url(../img/hoekje-list-hover.png) no-repeat left bottom; width: 305px; position: relative; left: -5px;}
 body.front #content-bottom .block-views ul li:hover .views-field-title a, body.front #content-bottom .block-views ul li:hover .views-field-field-job-arbeidsduur { color: white;}
@@ -159,9 +159,9 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 
 
 /* Content Bottom Blocks 1 - 2 - 3 */
-#content-bottom { margin: 80px 0 60px 0; clear: both; }
+#content-bottom { margin: 20px 0 60px 0; clear: both; }
 #content-bottom .region { width: 300px; float: left; margin-right: 20px; background: url(../img/bg-block-bottom.png) no-repeat center bottom; padding-bottom: 18px; position: relative;}
-#content-bottom .region .block-views { background: white; margin: 0; border: 1px solid #ccd3d5; padding-bottom: 10px; min-height: 290px;}
+#content-bottom .region .block-views { background: white; margin: 0; border: 1px solid #d1dbc4; padding-bottom: 10px; min-height: 290px;}
 #content-bottom .region .block-views h2 { margin-left: 15px; margin-right: 15px; margin-top: 10px;}
 #content-bottom .region-bottom-col3 { margin-right: 0;}
 
