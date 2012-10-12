@@ -184,6 +184,25 @@ if (theme_get_setting('style_enable_schemes') == 'on') {
 }
 // */
 
+function hedgecomm5_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  
+  $title = "<span>" . check_plain($element['#title']) . "</span>";
+  
+  if (!isset($element['#localized_options'])) {
+    $element['#localized_options'] = array();
+  } 
+  $element['#localized_options'] += array('html'=> TRUE);  
+  
+  $output = l($title, $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
 
 function hedgecomm5_site_map_box($variables) {
 
