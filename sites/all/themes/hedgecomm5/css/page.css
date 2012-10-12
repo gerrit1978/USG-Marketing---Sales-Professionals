@@ -99,7 +99,7 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 #search-block-form .form-actions .form-submit { background: url(../img/search_btn.jpg) no-repeat center center; width: 28px; height: 24px; text-indent: -999em; border: 1px solid #cfba88;}
 
 /* Header: logo, lang switch, search */
-#header-wrapper { background: white; height: 100px; overflow: hidden;}
+#header-wrapper { height: 100px; overflow: hidden;}
 #header { border-top: 5px solid #a07511; position: relative; padding: 0 10px;}
 #header #branding { width: 700px; float: left;}
 
@@ -114,20 +114,20 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 
 
 /* Primary Navigation */
-#nav-wrapper { height: 60px; line-height: 60px;background: #a07511; margin-bottom: 20px;}
-#nav-wrapper #menu-bar {}
-#nav-wrapper #menu-bar ul {}
+#nav-wrapper { margin-bottom: 20px; }
+#nav-wrapper .container { background: white; box-shadow: 0 0 10px #888; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+#nav-wrapper #menu-bar { height: 50px; line-height: 50px;}
+#nav-wrapper #menu-bar ul { padding-top: 16px;}
 #nav-wrapper #menu-bar ul li {list-style: none: float: left; text-align: center;}
-#nav-wrapper #menu-bar ul li a { color: white; text-transform: uppercase; font-size: 1.231em; background-color: #a07511; padding: 0 20px; width: 120px;}
-#nav-wrapper #menu-bar ul li a.active, #nav-wrapper #menu-bar ul li a.active#home-link { background-color: #b8984d;}
-#nav-wrapper #menu-bar ul li a#home-link { width: 45px; height: 60px; background: url(../img/home-link.png) no-repeat center center; display: block; text-indent: -999em; padding: 0; padding-right: 10px;}
+#nav-wrapper #menu-bar ul li a { color: #41555b; font-size: 1.231em; text-transform: lowercase; border-right: 1px solid #41555b; padding: 0 25px;}
+#nav-wrapper #menu-bar ul li a.active, #nav-wrapper #menu-bar ul li a.active#home-link { }
 
 /* Nice Menus */
-#nav-wrapper #menu-bar .block-nice-menus { line-height: 60px;}
+#nav-wrapper #menu-bar .block-nice-menus { }
 #nav-wrapper #menu-bar ul.nice-menu li { border: none; background: none; }
-#nav-wrapper #menu-bar ul.nice-menu li ul { top: 60px; border: none; }
+#nav-wrapper #menu-bar ul.nice-menu li ul { border: none; background: white; }
 #nav-wrapper #menu-bar ul.nice-menu li ul li { line-height: 28px; text-align: left; }
-#nav-wrapper #menu-bar ul.nice-menu li ul li a { text-transform: none; font-size: 1em; padding: 0; padding-left: 10px; width: 150px; }
+#nav-wrapper #menu-bar ul.nice-menu li ul li a { text-transform: none; font-size: 1em; padding: 0; border-right: none; padding-left: 10px;}
 
 /* Front page regions */
 body.front {}

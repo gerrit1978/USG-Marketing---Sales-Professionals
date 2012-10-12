@@ -34,17 +34,6 @@ jQuery(document).ready(function($) {
 	  }, 200)
 	});
 	
-	// animate primary links color
-  $('#nav-wrapper #menu-bar ul li a').hover(function() {
-		if (!$(this).hasClass('active')) {
-	    $(this).animate({ backgroundColor: '#b8984d' }, 100);
-	  }
-  }, function() {
-		if (!$(this).hasClass('active')) {  
-			$(this).animate({ backgroundColor: '#a07511' }, 100);  
-		}
-  });
-  
   // animate prefooter links color
   $('#tertiary-content-wrapper  a').hover(function() {
 		$(this).animate({borderBottomColor: '#e7dcc3'}, 150);
