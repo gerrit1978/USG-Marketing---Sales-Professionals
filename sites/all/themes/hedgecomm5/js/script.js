@@ -1,17 +1,6 @@
 jQuery(document).ready(function($) {
 
-/*
-  // zijbalk op z'n plaats houden
-  var $scrollingDiv = $(".region-sidebar-second");
- 
-		$(window).scroll(function(){			
-			$scrollingDiv
-				.stop()
-				.animate({"marginTop": ($(window).scrollTop()) + "px"}, "slow" );			
-		});
-*/
-
-  // zijbalk op z'n plaats houden
+  // zijbalk op z'n plaats houden: http://www.profilepicture.co.uk/sticky-sidebar-jquery-plugin/
 	$(".region-sidebar-second").stickySidebar();
 
 
