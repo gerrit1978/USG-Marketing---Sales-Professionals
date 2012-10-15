@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
 
+/*
   // zijbalk op z'n plaats houden
   var $scrollingDiv = $(".region-sidebar-second");
  
@@ -8,6 +9,11 @@ jQuery(document).ready(function($) {
 				.stop()
 				.animate({"marginTop": ($(window).scrollTop()) + "px"}, "slow" );			
 		});
+*/
+
+  // zijbalk op z'n plaats houden
+	$(".region-sidebar-second").stickySidebar();
+
 
 	// placeholder search form
 	$('#search-block-form .form-text').attr('placeholder', 'Site doorzoeken');
