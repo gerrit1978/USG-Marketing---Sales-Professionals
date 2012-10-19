@@ -20,6 +20,7 @@ function hc_job_feeds_cron() {
   );
   
   $jobs = array();
+  $jobs_from_feed = array();
   
   foreach ($feeds as $language => $feed) {
     $url = $feed['url'];
@@ -49,6 +50,8 @@ function hc_job_feeds_cron() {
         'body' => $body,
         'language' => $language,
       );
+      
+      $jobs_from_feed[$fid] = $fid;
     }
 
   }
@@ -62,9 +65,11 @@ function hc_job_feeds_cron() {
   }
 
   // get data from db
+  $jobs_from_db = array();
   $result = db_query("SELECT * FROM {hc_job_feeds_nodes};");
   foreach ($result as $row) {
     $fid = $row->fid;
+    $jobs_from_db[$fid] = $fid;
     if (isset($jobs_fids[$fid])) {
       unset($jobs_fids[$fid]);
       unset($jobs[$fid]);
@@ -81,7 +86,6 @@ function hc_job_feeds_cron() {
     $ew->language->set($job['language']);
     $ew->save();
     $nid = $ew->nid->value();
-    print "NID is " . $nid;
     
     // insert newly created job in db
     $result = db_insert('hc_job_feeds_nodes')
@@ -91,7 +95,24 @@ function hc_job_feeds_cron() {
       ))
       ->execute();
   }
-
+  
+  
+  
+  
+  /** REMOVING JOBS **/
+  $jobs_to_be_removed = array_diff($jobs_from_db, $jobs_from_feed);
+  
+  foreach ($jobs_to_be_removed as $fid) {
+    $result = db_query("SELECT nid FROM {hc_job_feeds_nodes} WHERE fid=:fid;", array(':fid' => $fid));
+    foreach ($result as $row) {
+      // we delete this node. Since we implemented hook_node_delete, the db entry in hc_job_feeds_nodes will also be removed
+      $nid = $row->nid;
+      $ew = entity_metadata_wrapper("node", $nid);
+      $ew->delete();
+      
+    }
+  }
+  
   watchdog('hc_job_feeds', 'Cron is met succes uitgevoerd uit de module');
 }
 
@@ -125,4 +146,14 @@ function hc_job_feeds_permission() {
       'description' => t('Perform administration of job feeds'),
     ),
   );
+}
+
+
+/**
+ * Implements hook_node_delete
+ */
+function hc_job_feeds_node_delete($node) {
+  db_delete('hc_job_feeds_nodes')
+    ->condition('nid', $node->nid)
+    ->execute();
 }
