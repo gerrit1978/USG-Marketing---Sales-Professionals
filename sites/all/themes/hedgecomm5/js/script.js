@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
   // animate prefooter links color
   $('#tertiary-content-wrapper  a').hover(function() {
 		$(this).animate({
-		  borderBottomColor: '#ffffff',
+		  borderBottomColor: '#d2dbc3',
 		  color: '#ffffff'
 		}, 150);
   }, function() {
