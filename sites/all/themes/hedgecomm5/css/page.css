@@ -178,7 +178,8 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 #content-bottom .region-bottom-col3 { margin-right: 0;}
 
 /* Prefooter */
-#tertiary-content-wrapper { height: 263px; background: #a9ba8c; overflow: hidden;}
+/* #tertiary-content-wrapper { height: 263px; background: #a9ba8c; overflow: hidden;} */
+#tertiary-content-wrapper { height: 263px; background: #d2dbc3; overflow: hidden;} 
 #tertiary-content-wrapper .container { padding-top: 30px; }
 
 

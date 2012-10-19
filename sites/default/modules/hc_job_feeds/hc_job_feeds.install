@@ -1,0 +1,30 @@
+<?php
+
+
+/**
+ * Implements hook_schema
+ */
+function hc_job_feeds_schema() {
+  return array(
+    'hc_job_feeds_nodes' => array(
+      'description' => t('The GUID from the XML feed and the corresponding {node}.nid'),
+      'fields' => array(
+        'fid' => array(
+          'description' => t('Unique feed ID'),
+          'type' => 'int',
+          'size' => 'medium',
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'nid' => array(
+          'description' => t('The {node}.nid'),
+          'type' => 'int',
+          'size' => 'medium',
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+      ),
+      'primary key' => array('fid'),
+    ),
+  );
+}
