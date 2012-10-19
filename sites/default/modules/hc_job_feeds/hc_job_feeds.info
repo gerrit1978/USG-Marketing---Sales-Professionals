@@ -1,0 +1,5 @@
+name            = Job Feeds
+description     = Voorziet feed functionaliteit voor het automatisch importeren van job nodes
+core            = 7.x
+version         = 7.x-1.0
+package         = HedgeComm

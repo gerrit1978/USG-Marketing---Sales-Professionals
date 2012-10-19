@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * Implements hook_cron
+ */
+function hc_job_feeds_cron() {
+
+  // first, we load the XML-feeds, once for NL, once for FR
+  $feeds = array(
+    'nl' => array(
+      'url' => variable_get('hc_feed_nl', ''),
+      'user' => variable_get('hc_user_nl', ''),
+      'password' => variable_get('hc_pass_nl', ''),
+    ),
+    'fr' => array(
+      'url' => variable_get('hc_feed_fr', ''),
+      'user' => variable_get('hc_user_fr', ''),
+      'password' => variable_get('hc_pass_fr', ''),
+    ),
+  );
+  
+  $jobs = array();
+  
+  foreach ($feeds as $language => $feed) {
+    $url = $feed['url'];
+    $user = $feed['user'];
+    $password = $feed['password'];
+    $context = stream_context_create(
+      array(
+        'http' => array(
+          'header'  => "Authorization: Basic " . base64_encode($user.":".$password)
+        )
+      )
+    ); 
+    
+    $file = file_get_contents($url, false, $context) or die('Kan niet laden');    
+    $xml = simplexml_load_string($file);    
+    
+    foreach ($xml->job as $item) {
+      $fid = (string)$item->referencenumber;
+      $title = (string)$item->title;
+      $url = (string)$item->url;
+      $body = (string)$item->description;
+      
+      $jobs[$fid] = array(
+        'fid' => $fid,
+        'title' => $title,
+        'url' => $url,
+        'body' => $body,
+        'language' => $language,
+      );
+    }
+
+  }
+
+
+  /** ADDING JOBS **/
+  $jobs_fids = array();
+  
+  foreach ($jobs as $fid => $job) {
+    $jobs_fids[$fid] = $fid;
+  }
+
+  // get data from db
+  $result = db_query("SELECT * FROM {hc_job_feeds_nodes};");
+  foreach ($result as $row) {
+    $fid = $row->fid;
+    if (isset($jobs_fids[$fid])) {
+      unset($jobs_fids[$fid]);
+      unset($jobs[$fid]);
+    }
+  }
+  
+  $i = 0;
+  foreach ($jobs as $job) {
+    $i++;
+    $e = entity_create("node", array('type' => "dummy_job"));
+    $ew = entity_metadata_wrapper("node", $e);
+    $ew->title->set($job['title']);
+    $ew->field_beschrijving->set(array('value' => $job['body']));
+    $ew->language->set($job['language']);
+    $ew->save();
+    $nid = $ew->nid->value();
+    print "NID is " . $nid;
+    
+    // insert newly created job in db
+    $result = db_insert('hc_job_feeds_nodes')
+      ->fields(array(
+        'fid' => $job['fid'],
+        'nid' => $nid,
+      ))
+      ->execute();
+  }
+
+  watchdog('hc_job_feeds', 'Cron is met succes uitgevoerd uit de module');
+}
+
+
+
+/**
+ * Implements hook_menu
+ */
+function hc_job_feeds_menu() {
+  $items = array();
+  
+  $items['admin/config/services/job_feeds'] = array(
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('hc_jobs_feeds_admin_form'),
+    'access arguments' => array('administer hc job feeds'),
+    'title' => t('Administer job feeds'),
+    'file' => 'hc_job_feeds.admin.inc',
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Implements hook_permission
+ */
+function hc_job_feeds_permission() {
+  return array(
+    'administer hc job feeds' => array(
+      'title' => t('Administer job feeds'),
+      'description' => t('Perform administration of job feeds'),
+    ),
+  );
+}
