@@ -41,13 +41,34 @@ function hc_job_feeds_cron() {
       $fid = (string)$item->referencenumber;
       $title = (string)$item->title;
       $url = (string)$item->url;
-      $body = (string)$item->description;
+      $city = (string)$item->city;
+/*       $body = (string)$item->description; */
+      $description = (string)$item->descriptionNoHTML->divided->description;
+      $requirements = (string)$item->descriptionNoHTML->divided->requirements;
+      $benefits = (string)$item->descriptionNoHTML->divided->benefits;
+      $salary = (string)$item->salary;
+      $education = (string)$item->education;
+      $jobtype = (string)$item->jobtype;
+      $category = (string)$item->category;
+      $category_group = (string)$item->categoryGroup;
+      $weekly_hours = (string)$item->weeklyHours;
+      $industry = (string)$item->industry;
       
       $jobs[$fid] = array(
         'fid' => $fid,
         'title' => $title,
         'url' => $url,
-        'body' => $body,
+        'city' => $city,
+        'body' => $description,
+        'requirements' => $requirements,
+        'benefits' => $benefits,
+        'salary' => $salary,
+        'education' => $education,
+        'jobtype' => $jobtype,
+        'category' => $category,
+        'category_group' => $category_group,
+        'weekly_hours' => $weekly_hours,
+        'industry' => $industry,
         'language' => $language,
       );
       
@@ -79,10 +100,28 @@ function hc_job_feeds_cron() {
   $i = 0;
   foreach ($jobs as $job) {
     $i++;
-    $e = entity_create("node", array('type' => "dummy_job"));
+    $e = entity_create("node", array('type' => "job"));
     $ew = entity_metadata_wrapper("node", $e);
+/*
+    print_r($ew->getPropertyInfo());
+    exit();
+*/
+
     $ew->title->set($job['title']);
-    $ew->field_beschrijving->set(array('value' => $job['body']));
+    $ew->field_beknopte_omschrijving->set(array(
+      'value' => check_markup($job['body'], "full_html"),
+      'format' => 'full_html',
+    ));
+    $ew->field_functie_eisen->set(array(
+      'value' => check_markup($job['requirements'], "full_html"),
+      'format' => 'full_html',
+    ));
+    $ew->field_wat_wij_bieden->set(array(
+      'value' => check_markup($job['benefits'], "full_html"),
+      'format' => 'full_html',
+    ));
+    $ew->field_job_regio->set($job['city']);
+    
     $ew->language->set($job['language']);
     $ew->save();
     $nid = $ew->nid->value();
@@ -96,12 +135,13 @@ function hc_job_feeds_cron() {
       ->execute();
   }
   
-  
+  drupal_set_message($i . ' job(s) toegevoegd.');  
   
   
   /** REMOVING JOBS **/
   $jobs_to_be_removed = array_diff($jobs_from_db, $jobs_from_feed);
   
+  $i = 0;  
   foreach ($jobs_to_be_removed as $fid) {
     $result = db_query("SELECT nid FROM {hc_job_feeds_nodes} WHERE fid=:fid;", array(':fid' => $fid));
     foreach ($result as $row) {
@@ -109,11 +149,12 @@ function hc_job_feeds_cron() {
       $nid = $row->nid;
       $ew = entity_metadata_wrapper("node", $nid);
       $ew->delete();
-      
+			$i++;      
     }
   }
   
-  watchdog('hc_job_feeds', 'Cron is met succes uitgevoerd uit de module');
+  drupal_set_message($i . ' job(s) verwijderd.');
+  
 }
 
 
