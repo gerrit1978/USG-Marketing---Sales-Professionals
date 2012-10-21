@@ -42,6 +42,7 @@ function hc_job_feeds_cron() {
       $title = (string)$item->title;
       $url = (string)$item->url;
       $city = (string)$item->city;
+      $province = (string)$item->province;
 /*       $body = (string)$item->description; */
       $description = (string)$item->descriptionNoHTML->divided->description;
       $requirements = (string)$item->descriptionNoHTML->divided->requirements;
@@ -59,6 +60,7 @@ function hc_job_feeds_cron() {
         'title' => $title,
         'url' => $url,
         'city' => $city,
+        'province' => $province,
         'body' => $description,
         'requirements' => $requirements,
         'benefits' => $benefits,
@@ -102,10 +104,9 @@ function hc_job_feeds_cron() {
     $i++;
     $e = entity_create("node", array('type' => "job"));
     $ew = entity_metadata_wrapper("node", $e);
-/*
-    print_r($ew->getPropertyInfo());
-    exit();
-*/
+
+		//TODO: Juiste term TID aan job toewijzen: nu tijdelijk alles op "Marketing"…
+		$ew->field_job_type->set("1");
 
     $ew->title->set($job['title']);
     $ew->field_beknopte_omschrijving->set(array(
@@ -120,7 +121,10 @@ function hc_job_feeds_cron() {
       'value' => check_markup($job['benefits'], "full_html"),
       'format' => 'full_html',
     ));
-    $ew->field_job_regio->set($job['city']);
+    $ew->field_job_regio->set($job['province']);
+    $ew->field_branche->set($job['industry']);
+    $ew->field_uur_per_week->set($job['weekly_hours']);
+    
     
     $ew->language->set($job['language']);
     $ew->save();

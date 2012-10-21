@@ -128,10 +128,10 @@ input[type=search] { border: none; border-bottom: 1px solid #cfba88;-moz-appeara
 /* Nice Menus */
 #nav-wrapper #menu-bar .block-nice-menus { }
 #nav-wrapper #menu-bar ul.nice-menu li { border: none; background: none; }
-#nav-wrapper #menu-bar ul.nice-menu li ul { border: none; background: white; top: 50px; background: white; border: 1px solid #ededed;}
+#nav-wrapper #menu-bar ul.nice-menu li ul { border: none; background: white; top: 50px; background: white; border: 1px solid #ededed; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; box-shadow: 0 0 6px #666; -moz-box-shadow: 0 0 6px #666; -webkit-box-shadow: 0 0 6px #666;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li { line-height: 28px; text-align: left; height: 28px;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a { text-transform: none; font-size: 1em; padding: 0; border-right: none; padding-left: 10px;}
-#nav-wrapper #menu-bar ul.nice-menu li ul li a:hover { color: #59802c; font-weight: bold;}
+#nav-wrapper #menu-bar ul.nice-menu li ul li a:hover { color: #59802c; }
 #nav-wrapper #menu-bar ul.nice-menu li ul li a span { border: none; padding: 0;}
 #nav-wrapper #menu-bar ul.nice-menu li ul li a.active { background: none; }
 
@@ -162,10 +162,10 @@ body.front .view-carrousel .view-footer { position: absolute; bottom: 20px; righ
 body.front #content-bottom .block-views ul { margin: 0; }
 body.front #content-bottom .block-views ul li { list-style: none; margin-bottom: -10px;line-height: 1.4; padding-left: 15px; padding-bottom: 4px; padding-top: 8px;}
 body.front #content-bottom .block-views ul li.last { margin-bottom: 3px;}
-body.front #content-bottom .block-views ul li .views-field-title a { color: b; font-size: 1.077em; border: none; }
-body.front #content-bottom .block-views ul li .views-field-field-job-arbeidsduur, body.front #content-bottom .block-views ul li .views-field-created {color: #cfd0d0; margin-bottom: 10px;}
+body.front #content-bottom .block-views ul li .title a { color: b; font-size: 1.077em; border: none; }
+body.front #content-bottom .block-views ul li .subtitle, body.front #content-bottom .block-views ul li .views-field-created {color: #cfd0d0; margin-bottom: 10px;}
 body.front #content-bottom .block-views ul li:hover { background: url(../img/hoekje-list-hover.png) no-repeat left bottom; width: 305px; position: relative; left: -5px;}
-body.front #content-bottom .block-views ul li:hover .views-field-title a, body.front #content-bottom .block-views ul li:hover .views-field-field-job-arbeidsduur { color: white;}
+body.front #content-bottom .block-views ul li:hover .title a, body.front #content-bottom .block-views ul li:hover .subtitle { color: white;}
 body.front #content-bottom .block-views .view-footer { margin-right: 10px;}
 body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px; right: 20px;}
 
