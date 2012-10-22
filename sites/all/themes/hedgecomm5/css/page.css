@@ -18,7 +18,7 @@ body.front h1#page-title { display: none; }
 /* Regions */
 .region-leaderboard {}
 .region-header {}
-.region-secondary-content {}
+.region-secondary-content { position: relative;}
 .region-highlighted {}
 .region-content-aside { }
 .region-tertiary-content {}
@@ -157,6 +157,18 @@ body.front .view-carrousel ul li .views-field-field-car-tekst .field-content { b
 body.front .view-carrousel ul li .views-field-field-car-tekst h1 { color: white;}
 body.front .view-carrousel ul li .views-field-field-car-tekst a { color: white; border-bottom: 1px solid #d1dbc4;}
 body.front .view-carrousel .view-footer { position: absolute; bottom: 20px; right: 20px; background: white; width: 30%; padding: 5px 10px; border-radius: 5px; color: #626161;}
+
+/* Exposed form front page jobs */
+#block-views-exp-jobs-page-1 { position: absolute; bottom: 30px; right: 30px; background: white; width: 190px; padding: 10px; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; }
+#block-views-exp-jobs-page-1 h2.block-title { background: #58802b; color: white; font-family: Georgia; font-weight: lighter; font-size: 14px; padding: 5px;}
+#block-views-exp-jobs-page-1 .views-exposed-form .views-exposed-widget { width: 190px;}
+#block-views-exp-jobs-page-1 .views-exposed-form .views-exposed-widget label { font-weight: lighter; font-size: 11px;}
+#block-views-exp-jobs-page-1 .views-exposed-form .views-exposed-widget .form-text { width: 184px; border: 1px solid #ededed;}
+
+#block-views-exp-jobs-page-1 .views-exposed-form .views-exposed-widget.views-submit-button { padding: 0;}
+#block-views-exp-jobs-page-1 .views-exposed-form .views-exposed-widget.views-submit-button .form-submit { float: right; padding: 0; background: #58802b; color: white; border: none; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; cursor: pointer;}
+#block-views-exp-jobs-page-1 form { margin-bottom: 0;}
+
 
 /* Front page job overview */
 body.front #content-bottom .block-views ul { margin: 0; }
