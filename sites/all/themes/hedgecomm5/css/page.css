@@ -1,4 +1,4 @@
-/* Page */
+  /* Page */
 * { margin: 0; padding: 0;}
 html { background: white; }
 body { margin: 0; padding: 0; color: #626261;}
@@ -206,10 +206,10 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 #tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li { list-style: none; margin-bottom: 15px; color: #59802c; background: url(../img/separator-blog.png) repeat-x left bottom; }
 #tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li.last { background: none; }
 #tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li a { color: #59802c; border-bottom: 1px solid #59802c;   }
-#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-field-auteur { color: #59802c; line-height: 1.2; margin-bottom: 6px;}
-#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-field-auteur span.title { color: #59802c; font-size: 1.077em; font-weight: 700; }
-#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-field-auteur span.small { font-size: 0.769em; color: #59802c; line-height: 0.6;}
-#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-field-feed-item-description p { font-size: 0.923em; line-height: 1.4;}
+#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-name { color: #59802c; line-height: 1.2; margin-bottom: 6px;}
+#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-name span.title { color: #59802c; font-size: 1.077em; font-weight: 700; }
+#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-name span.small { font-size: 0.769em; color: #59802c; line-height: 0.6;}
+#tertiary-content-wrapper .tertiary-right #block-views-blog-block ul li .views-field-body p { font-size: 0.923em; line-height: 1.4;}
 
 /* Footer */
 #footer-wrapper { height: 70px; line-height: 70px; background: #59802c;}
