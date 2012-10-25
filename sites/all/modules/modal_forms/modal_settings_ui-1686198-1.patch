@@ -1,0 +1,209 @@
+diff --git a/modal_forms.admin.inc b/modal_forms.admin.inc
+index 9173f3a..ff46aef 100644
+--- a/modal_forms.admin.inc
++++ b/modal_forms.admin.inc
+@@ -74,10 +74,10 @@ function modal_forms_admin_settings() {
+     '#description' => t('Automatically activate Modal forms for links to contact.'),
+   );
+ 
+-  // Advanced settings.
++  // Page activation/deactivation settings.
+   $form['modal_forms_advanced_settings'] = array(
+     '#type' => 'fieldset',
+-    '#title' => t('Advanced settings'),
++    '#title' => t('Page activation settings'),
+     '#collapsible' => TRUE,
+     '#collapsed' => TRUE,
+   );
+@@ -88,5 +88,130 @@ function modal_forms_admin_settings() {
+     '#description' => t("Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+   );
+ 
++  // Advanced modal settings.
++  $form['modal_forms_advanced_modal_settings'] = array(
++      '#type' => 'fieldset',
++      '#title' => t('Advanced modal settings'),
++      '#collapsible' => TRUE,
++      '#collapsed' => TRUE,
++  );
++  $form['modal_forms_advanced_modal_settings']['modal_forms_background_color'] = array(
++      '#type' => 'textfield',
++      '#title' => t('Background color'),
++      '#default_value' => variable_get('modal_forms_background_color', '#000'),
++      '#size' => 4,
++      '#maxlength' => 7,
++      '#required' => TRUE,
++      '#description' => t('The color of the background behind the modal. Should be entered in html hex notation (eg #000).'),
++  );
++  $form['modal_forms_advanced_modal_settings']['modal_forms_opacity'] = array(
++      '#type' => 'textfield',
++      '#title' => t('Background opacity'),
++      '#default_value' => variable_get('modal_forms_opacity', 0.85),
++      '#size' => 3,
++      '#maxlength' => 5,
++      '#required' => TRUE,
++      '#description' => t('The opacity of the background behind the modal. Should be entered as a decimal value (eg 0.85 = 85% opacity).'),
++  );
++
++  // Modal popup size settings
++  $modal_types = array('fixed' => t('Fixed'), 'scale' => t('Scale'));
++  $form['modal_forms_size_settings'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Modal popup sizes'),
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++  );
++  // Popup Small
++  $form['modal_forms_size_settings']['modal_forms_popup_small'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Modal popup small'),
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_small']['modal_forms_popup_small_type'] = array(
++      '#type' => 'radios',
++      '#title' => t('Type'),
++      '#default_value' => variable_get('modal_forms_popup_small_type', 'fixed'),
++      '#options' => $modal_types,
++      '#description' => t('Fixed sizes should be entered in pixels. Scaled sizes should be entered as a decimal percentage of the screen region (eg 0.8 = 80% of screen width/height).'),
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_small']['modal_forms_popup_small_width'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Width'),
++    '#default_value' => variable_get('modal_forms_popup_small_width', 300),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_small']['modal_forms_popup_small_height'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Height'),
++    '#default_value' => variable_get('modal_forms_popup_small_height', 300),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++  // Popup Medium
++  $form['modal_forms_size_settings']['modal_forms_popup_medium'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Modal popup medium'),
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_medium']['modal_forms_popup_medium_type'] = array(
++    '#type' => 'radios',
++    '#title' => t('Type'),
++    '#default_value' => variable_get('modal_forms_popup_medium_type', 'fixed'),
++    '#options' => $modal_types,
++    '#description' => t('Fixed sizes should be entered in pixels. Scaled sizes should be entered as a decimal percentage of the screen region (eg 0.8 = 80% of screen width/height).'),
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_medium']['modal_forms_popup_medium_width'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Width'),
++    '#default_value' => variable_get('modal_forms_popup_medium_width', 550),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_medium']['modal_forms_popup_medium_height'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Height'),
++    '#default_value' => variable_get('modal_forms_popup_medium_height', 450),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++  // Popup Large
++  $form['modal_forms_size_settings']['modal_forms_popup_large'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Modal popup large'),
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_large']['modal_forms_popup_large_type'] = array(
++    '#type' => 'radios',
++    '#title' => t('Type'),
++    '#default_value' => variable_get('modal_forms_popup_large_type', 'scale'),
++    '#options' => $modal_types,
++    '#description' => t('Fixed sizes should be entered in pixels. Scaled sizes should be entered as a decimal percentage of the screen region (eg 0.8 = 80% of screen width/height).'),
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_large']['modal_forms_popup_large_width'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Width'),
++    '#default_value' => variable_get('modal_forms_popup_large_width', 0.8),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++  $form['modal_forms_size_settings']['modal_forms_popup_large']['modal_forms_popup_large_height'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Height'),
++    '#default_value' => variable_get('modal_forms_popup_large_height', 0.8),
++    '#size' => 3,
++    '#maxlength' => 5,
++    '#required' => TRUE,
++  );
++
+   return system_settings_form($form);
+ }
+diff --git a/modal_forms.module b/modal_forms.module
+index 3d31b54..4d37a2c 100644
+--- a/modal_forms.module
++++ b/modal_forms.module
+@@ -151,13 +151,13 @@ function _modal_forms_doheader() {
+   $js_settings = array(
+     'modal-popup-small' => array(
+       'modalSize' => array(
+-        'type' => 'fixed',
+-        'width' => 300,
+-        'height' => 300,
++        'type' => variable_get('modal_forms_popup_small_type', 'fixed'),
++        'width' => floatval(variable_get('modal_forms_popup_small_width', 300)),
++        'height' => floatval(variable_get('modal_forms_popup_small_height', 300)),
+       ),
+       'modalOptions' => array(
+-        'opacity' => 0.85,
+-        'background' => '#000',
++        'opacity' => floatval(variable_get('modal_forms_opacity', 0.85)),
++        'background' => variable_get('modal_forms_background_color', '#000'),
+       ),
+       'animation' => 'fadeIn',
+       'modalTheme' => 'ModalFormsPopup',
+@@ -166,13 +166,13 @@ function _modal_forms_doheader() {
+     ),
+     'modal-popup-medium' => array(
+       'modalSize' => array(
+-        'type' => 'fixed',
+-        'width' => 550,
+-        'height' => 450,
++        'type' => variable_get('modal_forms_popup_medium_type', 'fixed'),
++        'width' => floatval(variable_get('modal_forms_popup_medium_width', 550)),
++        'height' => floatval(variable_get('modal_forms_popup_medium_height', 450)),
+       ),
+       'modalOptions' => array(
+-        'opacity' => 0.85,
+-        'background' => '#000',
++        'opacity' => floatval(variable_get('modal_forms_opacity', 0.85)),
++        'background' => variable_get('modal_forms_background_color', '#000'),
+       ),
+       'animation' => 'fadeIn',
+       'modalTheme' => 'ModalFormsPopup',
+@@ -181,13 +181,13 @@ function _modal_forms_doheader() {
+     ),
+     'modal-popup-large' => array(
+       'modalSize' => array(
+-        'type' => 'scale',
+-        'width' => 0.8,
+-        'height' => 0.8,
++        'type' => variable_get('modal_forms_popup_large_type', 'scale'),
++        'width' => floatval(variable_get('modal_forms_popup_large_width', 0.8)),
++        'height' => floatval(variable_get('modal_forms_popup_large_height', 0.8)),
+       ),
+       'modalOptions' => array(
+-        'opacity' => 0.85,
+-        'background' => '#000',
++        'opacity' => floatval(variable_get('modal_forms_opacity', 0.85)),
++        'background' => variable_get('modal_forms_background_color', '#000'),
+       ),
+       'animation' => 'fadeIn',
+       'modalTheme' => 'ModalFormsPopup',
