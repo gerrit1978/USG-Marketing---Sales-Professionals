@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
   // zijbalk op z'n plaats houden: http://www.profilepicture.co.uk/sticky-sidebar-jquery-plugin/
-	$(".region-sidebar-second").stickySidebar();
+	$(".region-sidebar-second").stickySidebar({speed: 800});
 
 
 	// placeholder search form
