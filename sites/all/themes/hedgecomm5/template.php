@@ -52,6 +52,23 @@ function hedgecomm5_process_html(&$vars) {
  * Override or insert variables into the page templates.
  */
 function hedgecomm5_preprocess_page(&$vars) {
+
+  // other page.tpl.php for webforms "spontaan solliciteren"
+  if (isset($vars['node']) && $vars['node']->type == 'webform') {
+	  $node_wrapper = entity_metadata_wrapper('node', $vars['node']);  
+	  $spontaan_solliciteren = $node_wrapper->field_spontaan_solliciteren->value();
+		  
+		if ($spontaan_solliciteren) {
+/*
+			print "<pre>";
+			print_r($vars);
+			print "</pre>";
+*/
+			$vars['theme_hook_suggestion'] = 'page__spontaan_solliciteren';
+		}
+  }
+
+
 }
 
 function hedgecomm5_process_page(&$vars) {

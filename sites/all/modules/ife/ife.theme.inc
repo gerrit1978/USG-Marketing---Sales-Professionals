@@ -1,5 +1,4 @@
 <?php
-// $Id: ife.theme.inc,v 1.1.2.1 2010/03/02 21:32:35 stijndm Exp $
 
 /**
  * @file
@@ -47,13 +46,15 @@ function theme_ife_settings_form_ids($variables) {
  * Theme the form element, add the error, when one occured.
  */
 function theme_ife_form_element($variables) {
-
+  $output = '';
   $output = $variables['element']['#children'];
-  if (isset($_SESSION['ife'][$variables['element']['#id']])) {
-    $output .= '<div class="messages error messages-inline">' . $_SESSION['ife'][$variables['element']['#id']] . '</div>';
-    unset($_SESSION['ife'][$variables['element']['#id']]);
+
+  if (isset($variables['element']['#id'])) {
+    $error = ife_errors('get', $variables['element']['#id']);
+
+    if (!empty($error)) {
+      $output .= '<div class="messages error messages-inline">' . $error . '</div>';
+    }
   }
-
   return $output;
-
 }

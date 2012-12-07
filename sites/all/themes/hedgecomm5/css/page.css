@@ -87,6 +87,10 @@ header[role=banner],
   word-wrap: break-word;
 }
 
+/* Main content */
+#main-content { padding-right: 10px; border-right: 1px solid #ededed;}
+body.node-type-job #main-content {border-right: 0;}
+
 /* Custom Styles */
 #columns a { color: black; border-bottom: 1px solid #ccd3d5;}
 #columns a.large-btn { font-size: 1.692em; color: white; background: #677a80; border-bottom: 5px solid #344e56; padding: 3px 25px; text-transform: uppercase; width: 180px; display: inline-block; text-align: center;}
@@ -274,3 +278,7 @@ body.front #content-bottom #bekijk-alle-jobs { position: absolute; bottom: -40px
 .node-type-job #block-hc-blocks-social-media-job ul { margin: 0; padding: 0; }
 .node-type-job #block-hc-blocks-social-media-job ul li { list-style: none; float: left; margin-right: 8px;}
 .node-type-job #block-hc-blocks-social-media-job ul li.tw { width: 80px !important; overflow: hidden !important;}
+
+/** Modal Form (spontaan solliciteren) **/
+#modalContent { width: 450px !important; height: 350px !important;}
+#modalContent .ctools-modal-content { width: 450px !important; height: 350px !important;}
